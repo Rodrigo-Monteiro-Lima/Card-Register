@@ -92,5 +92,19 @@ addBtn.addEventListener('click', () => {
 
 cardHolder.addEventListener('input', () => {
   const name = document.querySelector('.cc-holder .value');
-  name.innerHTML = cardHolder.value;
+  updateValue(name, cardHolder.value, 'FULANO DA SILVA');
 });
+
+securityCodeMasked.on('accept', () => {
+  const cvc = document.querySelector('.cc-security .value');
+  updateValue(cvc, securityCodeMasked.value, '123');
+});
+
+cardNumberMasked.on('accept', () => {
+  const ccNumber = document.querySelector('.cc-number');
+  updateValue(ccNumber, cardNumberMasked.value, '1234 5678 9012 3456');
+});
+
+const updateValue = (tag, code, txt) => {
+  tag.innerHTML = code.length === 0 ? txt : code;
+};
