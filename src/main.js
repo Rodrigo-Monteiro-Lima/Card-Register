@@ -102,7 +102,14 @@ securityCodeMasked.on('accept', () => {
 
 cardNumberMasked.on('accept', () => {
   const ccNumber = document.querySelector('.cc-number');
+  const cardType = cardNumberMasked.masked.currentMask.cardtype;
+  setCardType(cardType);
   updateValue(ccNumber, cardNumberMasked.value, '1234 5678 9012 3456');
+});
+
+expirationDateMasked.on('accept', () => {
+  const expiration = document.querySelector('.cc-expiration .value');
+  updateValue(expiration, expirationDateMasked.value, '02/32');
 });
 
 const updateValue = (tag, code, txt) => {
