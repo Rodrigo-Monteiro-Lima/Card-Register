@@ -81,6 +81,7 @@ const cardNumberMasked = IMask(cardNumber, cardNumberPattern);
 const addBtn = document.querySelector('#add-btn');
 const form = document.querySelector('form');
 const cardHolder = document.querySelector('#card-holder');
+const name = document.querySelector('.cc-holder .value');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -88,10 +89,16 @@ form.addEventListener('submit', (e) => {
 
 addBtn.addEventListener('click', () => {
   alert('Cartão adicionado!!');
+  [
+    cardHolder,
+    securityCodeMasked,
+    cardNumberMasked,
+    expirationDateMasked,
+  ].forEach((el) => (el.value = ''));
+  name.innerHTML = 'FULANO DA SILVA';
 });
 
 cardHolder.addEventListener('input', () => {
-  const name = document.querySelector('.cc-holder .value');
   updateValue(name, cardHolder.value, 'FULANO DA SILVA');
 });
 
